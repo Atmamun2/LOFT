@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD House Financial Dashboard - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 2rem;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .border-box {
+            border: 2px solid #666;
+            margin-bottom: 1.5rem;
+        }
+        .header-box {
+            border: 2px solid #666;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .section-header {
+            background: #e5e5e5;
+            border-bottom: 2px solid #666;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+        }
+        .content {
+            padding: 1rem;
+        }
+        .tabs {
+            border: 2px solid #666;
+            margin-bottom: 1.5rem;
+            display: flex;
+        }
+        .tab {
+            flex: 1;
+            padding: 0.75rem;
+            text-align: center;
+            border-right: 2px solid #666;
+            cursor: pointer;
+        }
+        .tab:last-child {
+            border-right: none;
+        }
+        .tab:hover {
+            background: #f5f5f5;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .tree-line {
+            color: #666;
+            padding-left: 1rem;
+        }
+        .tree-line-sub {
+            color: #999;
+            padding-left: 2rem;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .border-top {
+            border-top: 2px solid #666;
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .border-bottom {
+            border-bottom: 1px solid #999;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .bg-light {
+            background: #f5f5f5;
+            padding: 0.75rem;
+            border: 2px solid #666;
+        }
+        .member-card {
+            border: 1px solid #666;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .tx-item {
+            border-left: 4px solid #666;
+            padding-left: 0.5rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .alert-box {
+            border: 2px solid #666;
+            background: #f5f5f5;
+        }
+        .text-sm {
+            font-size: 10px;
+        }
+        .text-gray {
+            color: #666;
+        }
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+        .mt-1 {
+            margin-top: 0.5rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .blockchain-icon {
+            width: 48px;
+            height: 48px;
+            border: 2px solid #666;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-box">
+            <div>
+                <div class="text-sm text-gray mb-1">[LOGO]</div>
+                <div style="border: 1px solid #999; padding: 0.25rem 0.75rem; display: inline-block;">
+                    House Name: [The Smith House]
+                </div>
+                <div class="text-sm text-gray mt-1">
+                    Founded: [Date] | Founder: [Name]
+                </div>
+            </div>
+            <div style="text-align: right; border-left: 2px solid #666; padding-left: 1.5rem;">
+                <div class="text-sm text-gray mb-1">TOTAL NET WORTH</div>
+                <div style="font-size: 24px; border-bottom: 2px solid #666; padding-bottom: 0.25rem;">
+                    $[2,450,000]
+                </div>
+                <div class="text-sm text-gray mt-1">↑ [+12.5%] YTD</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="tabs">
+            <div class="tab">[Overview]</div>
+            <div class="tab">[Members]</div>
+            <div class="tab">[Transactions]</div>
+            <div class="tab">[Reports]</div>
+            <div class="tab">[Settings]</div>
+        </div>
+
+        <div class="grid">
+            <!-- Left Column -->
+            <div>
+                <!-- Balance Sheet -->
+                <div class="border-box">
+                    <div class="section-header">BALANCE SHEET</div>
+                    <div class="content">
+                        <!-- Assets -->
+                        <div class="mb-2">
+                            <div class="bold border-bottom">ASSETS</div>
+                            
+                            <div class="flex-between tree-line">
+                                <span>Current Assets</span>
+                                <span>$[480,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Cash & Equivalents</span>
+                                <span>$[125,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Receivables</span>
+                                <span>$[85,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between mb-1">
+                                <span>└─ Short-term Investments</span>
+                                <span>$[270,000]</span>
+                            </div>
+
+                            <div class="flex-between tree-line">
+                                <span>Fixed Assets</span>
+                                <span>$[1,850,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Primary Residence</span>
+                                <span>$[650,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Investment Properties</span>
+                                <span>$[420,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Business Assets</span>
+                                <span>$[580,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between mb-1">
+                                <span>└─ Vehicles & Equipment</span>
+                                <span>$[200,000]</span>
+                            </div>
+
+                            <div class="flex-between tree-line">
+                                <span>Long-term Investments</span>
+                                <span>$[420,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Retirement Accounts</span>
+                                <span>$[280,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between mb-1">
+                                <span>└─ Investment Portfolios</span>
+                                <span>$[140,000]</span>
+                            </div>
+
+                            <div class="flex-between bold border-top">
+                                <span>TOTAL ASSETS</span>
+                                <span>$[2,750,000]</span>
+                            </div>
+                        </div>
+
+                        <!-- Liabilities -->
+                        <div class="mb-2">
+                            <div class="bold border-bottom">LIABILITIES</div>
+                            
+                            <div class="flex-between tree-line">
+                                <span>Current Liabilities</span>
+                                <span>$[45,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Credit Cards</span>
+                                <span>$[12,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between mb-1">
+                                <span>└─ Short-term Loans</span>
+                                <span>$[33,000]</span>
+                            </div>
+
+                            <div class="flex-between tree-line">
+                                <span>Long-term Liabilities</span>
+                                <span>$[255,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Primary Mortgage</span>
+                                <span>$[180,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between mb-1">
+                                <span>└─ Investment Property Loans</span>
+                                <span>$[75,000]</span>
+                            </div>
+
+                            <div class="flex-between bold border-top">
+                                <span>TOTAL LIABILITIES</span>
+                                <span>$[300,000]</span>
+                            </div>
+                        </div>
+
+                        <!-- Equity -->
+                        <div>
+                            <div class="bold border-bottom">HOUSE EQUITY</div>
+                            
+                            <div class="flex-between tree-line">
+                                <span>Opening Equity</span>
+                                <span>$[2,250,000]</span>
+                            </div>
+                            <div class="flex-between tree-line">
+                                <span>Net Income (YTD)</span>
+                                <span>$[+200,000]</span>
+                            </div>
+                            
+                            <div class="flex-between bold border-top">
+                                <span>TOTAL EQUITY</span>
+                                <span>$[2,450,000]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Income Statement -->
+                <div class="border-box">
+                    <div class="section-header">INCOME STATEMENT (Q4 2025)</div>
+                    <div class="content">
+                        <div class="mb-2">
+                            <div class="bold border-bottom">REVENUE</div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Employment Income ([3] members)</span>
+                                <span>$[45,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Family Business Revenue</span>
+                                <span>$[28,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Investment Income</span>
+                                <span>$[8,500]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>└─ Rental Income</span>
+                                <span>$[6,000]</span>
+                            </div>
+                            <div class="flex-between bold border-top">
+                                <span>Total Revenue</span>
+                                <span>$[87,500]</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="bold border-bottom">EXPENSES</div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Housing & Utilities</span>
+                                <span>$[12,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Business Expenses</span>
+                                <span>$[15,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Living Expenses</span>
+                                <span>$[18,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Debt Servicing</span>
+                                <span>$[4,200]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>└─ Insurance & Healthcare</span>
+                                <span>$[3,800]</span>
+                            </div>
+                            <div class="flex-between bold border-top">
+                                <span>Total Expenses</span>
+                                <span>$[53,000]</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-light">
+                            <div class="flex-between bold mb-1">
+                                <span>NET INCOME</span>
+                                <span>$[34,500]</span>
+                            </div>
+                            <div class="text-sm text-gray" style="border-top: 1px solid #999; padding-top: 0.5rem;">
+                                Net Time Value: +[127] days of financial independence
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cash Flow Statement -->
+                <div class="border-box">
+                    <div class="section-header">CASH FLOW STATEMENT (Q4 2025)</div>
+                    <div class="content">
+                        <div class="mb-2">
+                            <div class="bold border-bottom">OPERATING ACTIVITIES</div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Net Income</span>
+                                <span>$[34,500]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Depreciation</span>
+                                <span>$[3,200]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>└─ Working Capital Changes</span>
+                                <span>$[-2,800]</span>
+                            </div>
+                            <div class="flex-between bold border-top">
+                                <span>Cash from Operations</span>
+                                <span>$[34,900]</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="bold border-bottom">INVESTING ACTIVITIES</div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Investment Purchases</span>
+                                <span>$[-15,000]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>└─ Equipment Purchase</span>
+                                <span>$[-5,000]</span>
+                            </div>
+                            <div class="flex-between bold border-top">
+                                <span>Cash from Investing</span>
+                                <span>$[-20,000]</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="bold border-bottom">FINANCING ACTIVITIES</div>
+                            <div class="tree-line-sub flex-between">
+                                <span>├─ Debt Payments</span>
+                                <span>$[-4,200]</span>
+                            </div>
+                            <div class="tree-line-sub flex-between">
+                                <span>└─ Member Contributions</span>
+                                <span>$[8,000]</span>
+                            </div>
+                            <div class="flex-between bold border-top">
+                                <span>Cash from Financing</span>
+                                <span>$[3,800]</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-light">
+                            <div class="flex-between bold mb-1">
+                                <span>NET CHANGE IN CASH</span>
+                                <span>$[18,700]</span>
+                            </div>
+                            <div class="flex-between text-sm" style="border-top: 1px solid #999; padding-top: 0.5rem;">
+                                <span>Opening Cash Balance</span>
+                                <span>$[106,300]</span>
+                            </div>
+                            <div class="flex-between bold" style="border-top: 2px solid #666; padding-top: 0.5rem; margin-top: 0.5rem;">
+                                <span>CLOSING CASH BALANCE</span>
+                                <span>$[125,000]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div>
+                <!-- Members -->
+                <div class="border-box">
+                    <div class="section-header">HOUSE MEMBERS ([5])</div>
+                    <div class="content">
+                        <div class="member-card">
+                            <div class="flex-between mb-1">
+                                <span class="bold">[John Smith]</span>
+                                <span class="text-gray">$[890K]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>Founder</span>
+                                <span>[Active]</span>
+                            </div>
+                        </div>
+                        <div class="member-card">
+                            <div class="flex-between mb-1">
+                                <span class="bold">[Mary Smith]</span>
+                                <span class="text-gray">$[780K]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>President</span>
+                                <span>[Active]</span>
+                            </div>
+                        </div>
+                        <div class="member-card">
+                            <div class="flex-between mb-1">
+                                <span class="bold">[David Smith]</span>
+                                <span class="text-gray">$[420K]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>Member</span>
+                                <span>[Active]</span>
+                            </div>
+                        </div>
+                        <div class="member-card">
+                            <div class="flex-between mb-1">
+                                <span class="bold">[Sarah Smith]</span>
+                                <span class="text-gray">$[280K]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>Member</span>
+                                <span>[Active]</span>
+                            </div>
+                        </div>
+                        <div class="member-card">
+                            <div class="flex-between mb-1">
+                                <span class="bold">[Tom Smith]</span>
+                                <span class="text-gray">$[80K]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>Member</span>
+                                <span>[Nullified]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time Value -->
+                <div class="border-box">
+                    <div class="section-header">TIME VALUE METRICS</div>
+                    <div class="content">
+                        <div class="bg-light mb-1">
+                            <div class="text-sm text-gray mb-1">NET TIME VALUE</div>
+                            <div class="bold" style="font-size: 24px;">[2,847] days</div>
+                            <div class="text-sm text-gray mt-1">≈ [7.8] years independence</div>
+                        </div>
+                        <div class="flex-between border-bottom text-sm">
+                            <span>Burn Rate:</span>
+                            <span>$[53K]/qtr</span>
+                        </div>
+                        <div class="flex-between border-bottom text-sm">
+                            <span>Runway (liquid):</span>
+                            <span>[905] days</span>
+                        </div>
+                        <div class="flex-between text-sm">
+                            <span>Time to Freedom:</span>
+                            <span>[4.2] years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions -->
+                <div class="border-box">
+                    <div class="section-header">RECENT TRANSACTIONS</div>
+                    <div class="content">
+                        <div class="tx-item">
+                            <div class="flex-between text-sm mb-1">
+                                <span>Business Revenue</span>
+                                <span>+$[12,500]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>By: [John]</span>
+                                <span>[✓]</span>
+                            </div>
+                        </div>
+                        <div class="tx-item">
+                            <div class="flex-between text-sm mb-1">
+                                <span>Investment Purchase</span>
+                                <span>-$[5,000]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>By: [Mary]</span>
+                                <span>[✓]</span>
+                            </div>
+                        </div>
+                        <div class="tx-item">
+                            <div class="flex-between text-sm mb-1">
+                                <span>Rental Payment</span>
+                                <span>+$[2,000]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>By: [David]</span>
+                                <span>[✓]</span>
+                            </div>
+                        </div>
+                        <div class="tx-item">
+                            <div class="flex-between text-sm mb-1">
+                                <span>Equipment Purchase</span>
+                                <span>-$[3,200]</span>
+                            </div>
+                            <div class="flex-between text-sm text-gray">
+                                <span>By: [Sarah]</span>
+                                <span>[⏳]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert -->
+                <div class="alert-box">
+                    <div style="border-bottom: 2px solid #666; padding: 0.5rem 1rem;">
+                        <div class="bold text-sm">[!] ALERTS</div>
+                    </div>
+                    <div class="content">
+                        <div class="text-sm">
+                            <div class="bold mb-1">Member Under Review</div>
+                            <div class="text-gray">
+                                [Tom Smith] - [2] warnings<br>
+                                Net contribution: -$[4,200]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blockchain -->
+                <div class="border-box">
+                    <div class="content text-center">
+                        <div class="blockchain-icon">
+                            <span>[🔒]</span>
+                        </div>
+                        <div class="bold text-sm mb-1">BLOCKCHAIN VERIFIED</div>
+                        <div class="text-sm text-gray mb-1">
+                            All transactions immutable
+                        </div>
+                        <div class="text-sm text-gray">
+                            Block #[1,247]<br>
+                            Hash: [0x4f5a...3e2d]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
