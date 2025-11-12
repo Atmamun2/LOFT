@@ -1,0 +1,28 @@
+{% macro progress_bar(value, total, color='primary', height=8, show_percentage=true) %}
+    {% set percentage = (value / total * 100) if total > 0 else 0 %}
+    <div class="progress mb-1" style="height: {{ height }}px;">
+        <div class="progress-bar bg-{{ color }}" 
+             role="progressbar" 
+             style="width: {{ percentage }}%"
+             aria-valuenow="{{ percentage }}" 
+             aria-valuemin="0" 
+             aria-valuemax="100">
+            {% if show_percentage %}{{ "%0.1f"|format(percentage) }}%{% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro stat_card(title, value, total, color='primary', show_count=false, count=0) %}
+    <div class="mb-3">
+        <div class="d-flex justify-content-between mb-1">
+            <span>{{ title }}</span>
+            <span class="fw-bold">{{ "%0.2f"|format(value) }} $</span>
+        </div>
+        {{ progress_bar(value, total, color, 10, true) }}
+        {% if show_count %}
+            <small class="text-muted">
+                {{ count }} transaction{{ 's' if count != 1 else '' }}
+            </small>
+        {% endif %}
+    </div>
+{% endmacro %}
