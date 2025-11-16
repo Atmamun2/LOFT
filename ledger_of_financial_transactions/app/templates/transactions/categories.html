@@ -71,90 +71,8 @@
                                         <div class="progress" style="height: 5px;">
                                             <div class="progress-bar bg-danger" 
                                                  role="progressbar" 
-                                                 style="width: {{ category.percentage_of_total|default(0) }}%"
-                                                 aria-valuenow="{{ category.percentage_of_total|default(0) }}" 
-                                                 aria-valuemin="0" 
-                                                 aria-valuemax="100">
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <div class="text-center p-5">
-                        <div class="mb-3">
-                            <i class="bi bi-tag" style="font-size: 3rem; opacity: 0.2;"></i>
-                        </div>
-                        <h5>No expense categories found</h5>
-                        <p class="text-muted">Create your first category to get started</p>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Income Categories</h5>
-            </div>
-            <div class="card-body p-0">
-                {% if income_categories %}
-                    <div class="list-group list-group-flush">
-                        {% for category in income_categories %}
-                            <div class="list-group-item">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="badge bg-success me-2">{{ category.transaction_count }}</span>
-                                        {{ category.name }}
-                                        {% if category.description %}
-                                            <small class="text-muted ms-2">{{ category.description }}</small>
-                                        {% endif %}
-                                    </div>
-                                    <div class="btn-group btn-group-sm">
-                                        <a href="{{ url_for('transactions.list_transactions', category=category.name) }}" 
-                                           class="btn btn-sm btn-outline-primary" 
-                                           title="View Transactions">
-                                            <i class="bi bi-list-ul"></i>
-                                        </a>
-                                        <button type="button" 
-                                                class="btn btn-sm btn-outline-secondary edit-category" 
-                                                data-id="{{ category.id }}"
-                                                data-name="{{ category.name }}"
-                                                data-description="{{ category.description or '' }}"
-                                                data-type="income"
-                                                title="Edit">
-                                            <i class="bi bi-pencil"></i>
-                                        </button>
-                                        {% if category.is_default %}
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-outline-secondary" 
-                                                    disabled
-                                                    title="Default category cannot be deleted">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        {% else %}
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-outline-danger delete-category" 
-                                                    data-id="{{ category.id }}"
-                                                    data-name="{{ category.name }}"
-                                                    title="Delete">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                {% if category.total_amount != 0 %}
-                                    <div class="mt-2">
-                                        <div class="d-flex justify-content-between small text-muted mb-1">
-                                            <span>Total: {{ "%0.2f"|format(category.total_amount) }} $</span>
-                                            <span>Avg/Month: {{ "%0.2f"|format(category.avg_per_month) }} $</span>
-                                        </div>
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar bg-success" 
-                                                 role="progressbar" 
-                                                 style="width: {{ category.percentage_of_total|default(0) }}%"
-                                                 aria-valuenow="{{ category.percentage_of_total|default(0) }}" 
+                                                 data-width="{{ category.percentage_of_total or 0 }}"
+                                                 aria-valuenow="{{ category.percentage_of_total or 0 }}" 
                                                  aria-valuemin="0" 
                                                  aria-valuemax="100">
                                             </div>
@@ -222,7 +140,7 @@
                         {% if total_income > 0 %}
                             <div class="progress-bar bg-success" 
                                  role="progressbar" 
-                                 style="width: {{ (total_income / (total_income + total_expenses) * 100) if (total_income + total_expenses) > 0 else 0 }}%"
+                                 data-width="{{ (total_income / (total_income + total_expenses) * 100) if (total_income + total_expenses) > 0 else 0 }}"
                                  aria-valuenow="{{ (total_income / (total_income + total_expenses) * 100) if (total_income + total_expenses) > 0 else 0 }}" 
                                  aria-valuemin="0" 
                                  aria-valuemax="100">
@@ -482,8 +400,17 @@ document.getElementById('editCategoryForm').addEventListener('submit', function(
 // Handle file input change to show file name
 document.getElementById('importFile').addEventListener('change', function() {
     const fileName = this.files[0]?.name || 'No file selected';
-    const label = this.nextElementSibling;
-    label.textContent = fileName;
+    const label = document.querySelector('label[for="importFile"]');
+    if (label) {
+        label.textContent = fileName;
+    }
+});
+
+// Set progress bar widths
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-width]').forEach(function(element) {
+        element.style.width = element.getAttribute('data-width') + '%';
+    });
 });
 </script>
 {% endblock %}
