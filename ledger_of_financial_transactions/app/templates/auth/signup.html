@@ -3,123 +3,74 @@
 {% block title %}Sign Up - Financial Ledger{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-md-8 col-lg-6">
-        <div class="card shadow">
-            <div class="card-body p-4">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
                 <div class="text-center mb-4">
-                    <h2>Create an Account</h2>
+                    <div class="mb-3">
+                        <i class="bi bi-person-plus text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h2 class="fw-bold">Create Account</h2>
                     <p class="text-muted">Join us to start managing your finances</p>
                 </div>
                 
-                <form method="POST" action="{{ url_for('auth.signup') }}" novalidate>
+                <form method="POST" action="{{ url_for('auth.register') }}" novalidate>
                     {{ form.hidden_tag() }}
                     
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="first_name" class="form-label">First Name</label>
+                            <label for="username" class="form-label fw-semibold">Username</label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                <input type="text" class="form-control {% if form.first_name.errors %}is-invalid{% endif %}" 
-                                       id="first_name" name="first_name" placeholder="John" 
-                                       value="{{ form.first_name.data or '' }}" required>
-                                {% if form.first_name.errors %}
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-person text-muted"></i>
+                                </span>
+                                <input type="text" class="form-control border-start-0 {% if form.username.errors %}is-invalid{% endif %}" 
+                                       id="username" name="username" placeholder="Choose a username" 
+                                       value="{{ form.username.data or '' }}" required>
+                                {% if form.username.errors %}
                                     <div class="invalid-feedback">
-                                        {{ form.first_name.errors[0] }}
+                                        {{ form.username.errors[0] }}
                                     </div>
                                 {% endif %}
                             </div>
                         </div>
                         
                         <div class="col-md-6 mb-3">
-                            <label for="last_name" class="form-label">Last Name</label>
+                            <label for="email" class="form-label fw-semibold">Email Address</label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                <input type="text" class="form-control {% if form.last_name.errors %}is-invalid{% endif %}" 
-                                       id="last_name" name="last_name" placeholder="Doe"
-                                       value="{{ form.last_name.data or '' }}">
-                                {% if form.last_name.errors %}
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-envelope text-muted"></i>
+                                </span>
+                                <input type="email" class="form-control border-start-0 {% if form.email.errors %}is-invalid{% endif %}" 
+                                       id="email" name="email" placeholder="your@email.com" 
+                                       value="{{ form.email.data or '' }}" required>
+                                {% if form.email.errors %}
                                     <div class="invalid-feedback">
-                                        {{ form.last_name.errors[0] }}
+                                        {{ form.email.errors[0] }}
                                     </div>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
-                            <input type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %}" 
-                                   id="username" name="username" placeholder="johndoe" 
-                                   value="{{ form.username.data or '' }}" required>
-                            {% if form.username.errors %}
-                                <div class="invalid-feedback">
-                                    {{ form.username.errors[0] }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-text">This will be your unique identifier.</div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email Address</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                            <input type="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" 
-                                   id="email" name="email" placeholder="john@example.com" 
-                                   value="{{ form.email.data or '' }}" required>
-                            {% if form.email.errors %}
-                                <div class="invalid-feedback">
-                                    {{ form.email.errors[0] }}
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-key"></i></span>
-                            <input type="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}" 
-                                   id="password" name="password" placeholder="••••••••" required>
-                            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            {% if form.password.errors %}
-                                <div class="invalid-feedback">
-                                    {{ form.password.errors[0] }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols.</div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="confirm_password" class="form-label">Confirm Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                            <input type="password" class="form-control {% if form.confirm_password.errors %}is-invalid{% endif %}" 
-                                   id="confirm_password" name="confirm_password" placeholder="••••••••" required>
-                            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="confirm_password">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            {% if form.confirm_password.errors %}
-                                <div class="invalid-feedback">
-                                    {{ form.confirm_password.errors[0] }}
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input {% if form.terms.errors %}is-invalid{% endif %}" 
-                               id="terms" name="terms" required>
-                        <label class="form-check-label" for="terms">
-                            I agree to the <a href="{{ url_for('main.terms') }}">Terms of Service</a> and 
-                            <a href="{{ url_for('main.privacy') }}">Privacy Policy</a>
-                        </label>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label fw-semibold">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-lock text-muted"></i>
+                                </span>
+                                <input type="password" class="form-control border-start-0 {% if form.password.errors %}is-invalid{% endif %}" 
+                                       id="password" name="password" placeholder="Create a password" required>
+                                <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                {% if form.password.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.password.errors[0] }}
+                                    </div>
+                                {% endif %}
                         {% if form.terms.errors %}
                             <div class="invalid-feedback d-block">
                                 {{ form.terms.errors[0] }}
