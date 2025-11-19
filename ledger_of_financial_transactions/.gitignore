@@ -25,7 +25,7 @@ venv/
 ENV/
 
 # Database
-*.db
+# *.db
 *.sqlite3
 
 # Environment variables
@@ -41,7 +41,7 @@ ENV/
 *.log
 
 # Local development
-instance/
+
 
 # OS generated files
 .DS_Store
